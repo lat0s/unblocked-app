@@ -1,0 +1,41 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "Unblocked",
+  "version": "0.1.0",
+  "identifier": "dev.latos.unblocked",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:1420",
+    "beforeDevCommand": "vp dev --port 1420 --strictPort",
+    "beforeBuildCommand": "vp build"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "Unblocked",
+        "width": 1240,
+        "height": 800,
+        "minWidth": 860,
+        "minHeight": 560,
+        "resizable": true
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src ipc: http://ipc.localhost"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["deb", "rpm", "appimage"],
+    "category": "Productivity",
+    "shortDescription": "Brain dump in, plan out",
+    "longDescription": "Write down everything on your mind. Unblocked turns the note into tasks and events, asks a few questions where it would otherwise guess, and lets you review every item before it lands on your board or calendar.",
+    "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.png"],
+    "linux": {
+      "deb": { "depends": ["libwebkit2gtk-4.1-0", "libgtk-3-0"] },
+      "rpm": { "depends": ["webkit2gtk4.1"] }
+    }
+  },
+  "mainBinaryName": "unblocked"
+}

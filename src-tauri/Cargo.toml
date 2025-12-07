@@ -1,0 +1,33 @@
+[package]
+name = "unblocked"
+version = "0.1.0"
+description = "Brain dump in, plan out: a local-first planner with a human-in-the-loop AI wizard"
+authors = ["George Latos"]
+license = "MIT"
+repository = "https://github.com/lat0s/unblocked"
+edition = "2024"
+rust-version = "1.90"
+
+[lib]
+name = "unblocked_lib"
+crate-type = ["rlib"]
+
+[[bin]]
+name = "unblocked"
+path = "src/main.rs"
+
+[build-dependencies]
+tauri-build = { version = "2.7.4", features = [] }
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tauri = { version = "2.12.5", features = [] }
+tauri-plugin-single-instance = "2"
+log = { version = "0.4", features = ["std"] }
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+strip = true

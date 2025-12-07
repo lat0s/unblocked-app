@@ -1,0 +1,147 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource/archivo-black";
+@import "@fontsource-variable/space-grotesk";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Paper and ink with the mascot's purple. Hard shadows, thick borders. */
+:root {
+  --paper: #fbf8f3;
+  --ink: #17131f;
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: #ffffff;
+  --card-foreground: var(--ink);
+  --popover: #ffffff;
+  --popover-foreground: var(--ink);
+  --primary: #6b4eff;
+  --primary-foreground: #ffffff;
+  --secondary: #efe9ff;
+  --secondary-foreground: var(--ink);
+  --muted: #f2eee7;
+  --muted-foreground: #6b6475;
+  --accent: #efe9ff;
+  --accent-foreground: var(--ink);
+  --destructive: #e5484d;
+  --border: #e4ded4;
+  --input: #d9d2c6;
+  --ring: #6b4eff;
+  --edge: var(--ink);
+  --shadow: var(--ink);
+  --task: #6b4eff;
+  --event: #f0566a;
+  --doing: #ffc93c;
+  --done: #2bb673;
+  --deep: #3b82f6;
+  --radius: 0.6rem;
+}
+
+.dark {
+  --paper: #121016;
+  --ink: #f3f0fa;
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: #1b1822;
+  --card-foreground: var(--ink);
+  --popover: #1f1b28;
+  --popover-foreground: var(--ink);
+  --primary: #8f7bff;
+  --primary-foreground: #0e0b14;
+  --secondary: #2a2340;
+  --secondary-foreground: var(--ink);
+  --muted: #221e2b;
+  --muted-foreground: #a39db0;
+  --accent: #2a2340;
+  --accent-foreground: var(--ink);
+  --border: #2e2939;
+  --input: #3a3447;
+  --ring: #8f7bff;
+  --edge: #3d3652;
+  --shadow: #000000;
+}
+
+@theme inline {
+  --font-sans: "Space Grotesk Variable", system-ui, sans-serif;
+  --font-heading: "Archivo Black", "Space Grotesk Variable", sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-edge: var(--edge);
+  --color-task: var(--task);
+  --color-event: var(--event);
+  --color-doing: var(--doing);
+  --color-done: var(--done);
+  --color-deep: var(--deep);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --shadow-brutal: 3px 3px 0 0 var(--shadow);
+  --shadow-brutal-sm: 2px 2px 0 0 var(--shadow);
+  --shadow-brutal-lg: 5px 5px 0 0 var(--shadow);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+    font-size: 14px;
+    user-select: none;
+    cursor: default;
+  }
+  input,
+  textarea,
+  [contenteditable] {
+    user-select: text;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--foreground) 16%, transparent);
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+  }
+}
+
+@utility brutal {
+  border: 2px solid var(--edge);
+  box-shadow: var(--shadow-brutal);
+}
+
+@utility brutal-sm {
+  border: 2px solid var(--edge);
+  box-shadow: var(--shadow-brutal-sm);
+}
+
+@utility num {
+  font-variant-numeric: tabular-nums;
+}
