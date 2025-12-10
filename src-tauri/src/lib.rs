@@ -1,6 +1,7 @@
 //! Unblocked: brain dump in, plan out.
 //! Each feature is a vertical slice (domain logic, schema and its Tauri commands); `core` is the shared kernel.
 
+pub mod board;
 pub mod core;
 
 use std::sync::Arc;
@@ -8,7 +9,7 @@ use tauri::Manager;
 
 /// Every slice's schema, in the order it was introduced.
 pub fn migrations() -> Vec<core::db::Migration> {
-    vec![]
+    vec![("board", board::SCHEMA)]
 }
 
 pub fn run() {
@@ -38,6 +39,11 @@ pub fn run() {
             core::commands::log_client,
             core::commands::pref_get,
             core::commands::pref_set,
+            board::commands::tasks_list,
+            board::commands::task_create,
+            board::commands::task_update,
+            board::commands::task_move,
+            board::commands::task_delete,
         ])
         .run(tauri::generate_context!());
 
