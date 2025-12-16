@@ -27,6 +27,8 @@ tauri-plugin-single-instance = "2"
 log = { version = "0.4", features = ["std"] }
 rusqlite = { version = "0.37", features = ["bundled"] }
 uuid = { version = "1.29.0", features = ["v4"] }
+ureq = { version = "3.4", features = ["json"] }
+keyring = { version = "3.6", features = ["sync-secret-service", "crypto-rust", "apple-native", "windows-native"] }
 chrono = { version = "0.4.45", default-features = false, features = ["clock", "serde", "std"] }
 
 [profile.release]

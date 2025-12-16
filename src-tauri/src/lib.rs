@@ -1,6 +1,7 @@
 //! Unblocked: brain dump in, plan out.
 //! Each feature is a vertical slice (domain logic, schema and its Tauri commands); `core` is the shared kernel.
 
+pub mod ai;
 pub mod board;
 pub mod calendar;
 pub mod core;
@@ -40,6 +41,12 @@ pub fn run() {
             core::commands::log_client,
             core::commands::pref_get,
             core::commands::pref_set,
+            ai::commands::ai_status,
+            ai::commands::ai_save_settings,
+            ai::commands::ai_set_key,
+            ai::commands::ai_clear_key,
+            ai::commands::ai_models,
+            ai::commands::ai_test,
             board::commands::tasks_list,
             board::commands::task_create,
             board::commands::task_update,

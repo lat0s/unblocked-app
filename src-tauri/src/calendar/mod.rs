@@ -86,10 +86,10 @@ fn clean(i: EventInput) -> AppResult<EventInput> {
     if start.is_none() {
         end = None;
     }
-    if let (Some(s), Some(e)) = (&start, &end) {
-        if e <= s {
-            return Err(AppError::InvalidInput("the event has to end after it starts".into()));
-        }
+    if let (Some(s), Some(e)) = (&start, &end)
+        && e <= s
+    {
+        return Err(AppError::InvalidInput("the event has to end after it starts".into()));
     }
     Ok(EventInput { title, kind: Some(kind), start_time: start, end_time: end, notes: i.notes.filter(|n| !n.trim().is_empty()), ..i })
 }

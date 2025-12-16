@@ -110,10 +110,11 @@ fn validate(i: &TaskInput) -> AppResult<()> {
     check("priority", &i.priority, &["low", "medium", "high", "urgent"])?;
     check("workType", &i.work_type, &["deep", "shallow"])?;
     check("energy", &i.energy, &["low", "medium", "high"])?;
-    if let Some(d) = &i.due_date {
-        if !d.is_empty() && chrono::NaiveDate::parse_from_str(d, "%Y-%m-%d").is_err() {
-            return Err(AppError::InvalidInput("dueDate must be YYYY-MM-DD".into()));
-        }
+    if let Some(d) = &i.due_date
+        && !d.is_empty()
+        && chrono::NaiveDate::parse_from_str(d, "%Y-%m-%d").is_err()
+    {
+        return Err(AppError::InvalidInput("dueDate must be YYYY-MM-DD".into()));
     }
     Ok(())
 }
