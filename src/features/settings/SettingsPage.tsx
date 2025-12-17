@@ -1,4 +1,4 @@
-import { BookOpen, Check, ExternalLink, KeyRound, Loader2, Plug, Sparkles } from "lucide-react";
+import { BookOpen, Check, KeyRound, Loader2, Plug, Sparkles } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { toast } from "sonner";
 
@@ -112,14 +112,9 @@ function AiCard({ status }: { status: AiStatus }) {
               </Button>
             )}
           </form>
-          <a
-            href={p.keyUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="flex w-fit items-center gap-1 text-xs text-primary hover:underline"
-          >
-            Get a {p.label} key <ExternalLink className="size-3" />
-          </a>
+          <p className="text-xs text-muted-foreground">
+            Get one at <span className="num text-foreground select-all">{p.keyUrl.replace("https://", "")}</span>
+          </p>
         </div>
 
         <div className="grid gap-1.5">
