@@ -4,6 +4,7 @@
 pub mod ai;
 pub mod board;
 pub mod calendar;
+pub mod capture;
 pub mod core;
 
 use std::sync::Arc;
@@ -11,7 +12,7 @@ use tauri::Manager;
 
 /// Every slice's schema, in the order it was introduced.
 pub fn migrations() -> Vec<core::db::Migration> {
-    vec![("board", board::SCHEMA), ("calendar", calendar::SCHEMA)]
+    vec![("board", board::SCHEMA), ("calendar", calendar::SCHEMA), ("capture", capture::SCHEMA)]
 }
 
 pub fn run() {
@@ -52,6 +53,9 @@ pub fn run() {
             board::commands::task_update,
             board::commands::task_move,
             board::commands::task_delete,
+            capture::commands::notes_list,
+            capture::commands::note_save,
+            capture::commands::note_delete,
             calendar::commands::events_list,
             calendar::commands::event_create,
             calendar::commands::event_update,
