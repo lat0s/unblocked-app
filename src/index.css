@@ -145,3 +145,10 @@
 @utility num {
   font-variant-numeric: tabular-nums;
 }
+
+/* Ruled paper for the note editor; rules follow the 2rem line height. */
+@utility paper {
+  background-image: repeating-linear-gradient(to bottom, transparent 0 calc(2rem - 1px), var(--border) calc(2rem - 1px) 2rem);
+  background-attachment: local;
+  background-position-y: 13px;
+}

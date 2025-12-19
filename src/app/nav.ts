@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 
-export type PageId = "today" | "inbox" | "board" | "calendar" | "settings";
+export type PageId = "today" | "capture" | "inbox" | "board" | "calendar" | "settings";
 
 export const NavContext = createContext<(page: PageId) => void>(() => {});
 
