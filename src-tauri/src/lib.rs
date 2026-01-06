@@ -6,13 +6,14 @@ pub mod board;
 pub mod calendar;
 pub mod capture;
 pub mod core;
+pub mod inbox;
 
 use std::sync::Arc;
 use tauri::Manager;
 
 /// Every slice's schema, in the order it was introduced.
 pub fn migrations() -> Vec<core::db::Migration> {
-    vec![("board", board::SCHEMA), ("calendar", calendar::SCHEMA), ("capture", capture::SCHEMA)]
+    vec![("board", board::SCHEMA), ("calendar", calendar::SCHEMA), ("capture", capture::SCHEMA), ("inbox", inbox::SCHEMA)]
 }
 
 pub fn run() {
@@ -56,6 +57,11 @@ pub fn run() {
             capture::commands::notes_list,
             capture::commands::note_save,
             capture::commands::note_delete,
+            inbox::commands::inbox_list,
+            inbox::commands::inbox_update,
+            inbox::commands::inbox_accept,
+            inbox::commands::inbox_accept_note,
+            inbox::commands::inbox_dismiss,
             calendar::commands::events_list,
             calendar::commands::event_create,
             calendar::commands::event_update,
