@@ -13,7 +13,7 @@ export function NoteHistory({ activeId, onOpen, onDeleted }: Props) {
   const { data: notes = [] } = useNotes();
   const del = useDeleteNote();
   return (
-    <aside className="flex min-h-0 flex-col rounded-xl border-2 border-edge bg-card shadow-brutal">
+    <aside className="hidden min-h-0 flex-col lg:flex rounded-xl border-2 border-edge bg-card shadow-brutal">
       <h2 className="border-b-2 border-edge px-4 py-3 font-heading text-sm tracking-wide uppercase">Earlier notes</h2>
       <div className="min-h-0 flex-1 overflow-y-auto p-2">
         {notes.length === 0 && (
