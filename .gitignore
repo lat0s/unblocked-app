@@ -31,3 +31,8 @@ dist-ssr
 # Tauri
 src-tauri/target
 src-tauri/gen
+
+# Reference material for the AI stays local, never in the repo
+books/
+*.pdf
+*.epub
