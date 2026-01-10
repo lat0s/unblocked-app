@@ -1,11 +1,11 @@
-/** Display names for the books the AI cites. */
-const BOOKS: Record<string, string> = {
-  gtd: "Getting Things Done",
-  deep_work: "Deep Work",
-  atomic_habits: "Atomic Habits",
-  adhd: "ADHD strategies",
-  personal_kanban: "Personal Kanban",
+/** Short labels for the planning methods the AI cites. */
+const METHODS: Record<string, string> = {
+  gtd: "GTD",
+  deep_work: "Deep work",
+  atomic_habits: "Habits",
+  adhd: "ADHD-friendly",
+  personal_kanban: "Kanban",
 };
 
-export const bookName = (id: string) => BOOKS[id] ?? id.replaceAll("_", " ");
-export const principleName = (p: string) => p.replaceAll("_", " ");
+export const methodName = (id: string) => METHODS[id] ?? id.replaceAll("_", " ");
+export const principleName = (p: string) => p.replaceAll("_", " ").toLowerCase();

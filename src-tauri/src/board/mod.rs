@@ -18,7 +18,7 @@ pub struct Subtask {
     pub done: bool,
 }
 
-/// Which book idea shaped an AI item, shown so the user can judge it.
+/// Which planning method shaped an AI item, shown so the user can judge it.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct Strategy {
     pub book: String,

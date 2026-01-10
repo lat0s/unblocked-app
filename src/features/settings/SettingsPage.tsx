@@ -1,4 +1,4 @@
-import { BookOpen, Check, KeyRound, Loader2, Plug, Sparkles } from "lucide-react";
+import { Library, Check, KeyRound, Loader2, Plug, Sparkles } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { toast } from "sonner";
 
@@ -173,9 +173,9 @@ function GroundingCard({ status }: { status: AiStatus }) {
   const gemini = settings.provider === "gemini";
   return (
     <Card
-      icon={<BookOpen className="size-4" />}
-      title="Book grounding"
-      sub="Optional. Lets Gemini quote GTD, Deep Work, Atomic Habits and friends when it explains a suggestion."
+      icon={<Library className="size-4" />}
+      title="Reference library"
+      sub="Optional. Lets Gemini look things up in your own reference files when it explains a suggestion."
     >
       <div className="grid gap-1.5">
         <Label htmlFor="store">Gemini File Search store</Label>
@@ -200,8 +200,8 @@ function GroundingCard({ status }: { status: AiStatus }) {
         </div>
         <p className="text-xs text-muted-foreground">
           {gemini
-            ? "Leave empty to use the built-in strategy notes only. See the README for building a store from your own books."
-            : "Only available with Gemini. OpenRouter uses the built-in strategy notes."}
+            ? "Leave empty to use the built-in method notes only."
+            : "Only available with Gemini. OpenRouter uses the built-in method notes."}
         </p>
       </div>
     </Card>

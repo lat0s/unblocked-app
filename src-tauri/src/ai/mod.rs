@@ -44,7 +44,7 @@ impl Provider {
 pub struct Settings {
     pub provider: Provider,
     pub model: String,
-    /// Gemini File Search store with the productivity books; empty means no grounding.
+    /// Optional Gemini File Search store with reference material; empty means no grounding.
     #[serde(default)]
     pub store: Option<String>,
 }

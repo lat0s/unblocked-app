@@ -3,8 +3,8 @@ import { Brain, CalendarDays, Check, ChevronDown, Clock, Flag, ListChecks, Penci
 import { useState } from "react";
 
 import { KIND_LABEL } from "@/features/calendar/api";
-import { bookName, principleName } from "@/shared/books";
 import { due, minutes, pct } from "@/shared/format";
+import { methodName, principleName } from "@/shared/methods";
 import { Badge } from "@/shared/ui/badge";
 import { Button } from "@/shared/ui/button";
 import { cn } from "@/shared/utils";
@@ -136,7 +136,7 @@ export function ProposalCard({ item, onEdit }: { item: Item; onEdit: () => void 
           <ul className="mt-3 grid gap-2 rounded-lg border-2 border-dashed border-border bg-secondary/60 p-3">
             {p.strategies.map((s, i) => (
               <li key={i} className="text-xs leading-relaxed">
-                <span className="font-semibold">{bookName(s.book)}</span>
+                <span className="font-semibold">{methodName(s.book)}</span>
                 <span className="text-muted-foreground"> · {principleName(s.principle)}</span>
                 <p className="text-muted-foreground">{s.explanation}</p>
               </li>
