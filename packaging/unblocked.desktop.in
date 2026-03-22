@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Unblocked
+GenericName=Task Planner
+Comment=Dump your thoughts, get a plan: tasks, a board and a calendar
+Exec=@EXEC@
+Icon=unblocked
+Terminal=false
+Categories=Office;ProjectManagement;
+Keywords=tasks;todo;kanban;calendar;planner;notes;gtd;adhd;
+StartupWMClass=unblocked
+StartupNotify=true
