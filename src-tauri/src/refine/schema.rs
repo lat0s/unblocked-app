@@ -22,7 +22,7 @@ fn one_of(values: &[&str]) -> Value {
 
 fn strategies() -> Value {
     list(obj(json!({
-        "book": { "type": "string", "enum": ["gtd", "deep_work", "atomic_habits", "adhd", "personal_kanban"] },
+        "method": { "type": "string", "enum": ["gtd", "deep_work", "atomic_habits", "adhd", "personal_kanban"] },
         "principle": { "type": "string" },
         "explanation": { "type": "string" }
     })))

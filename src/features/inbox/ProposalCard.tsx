@@ -136,7 +136,7 @@ export function ProposalCard({ item, onEdit }: { item: Item; onEdit: () => void 
           <ul className="mt-3 grid gap-2 rounded-lg border-2 border-dashed border-border bg-secondary/60 p-3">
             {p.strategies.map((s, i) => (
               <li key={i} className="text-xs leading-relaxed">
-                <span className="font-semibold">{methodName(s.book)}</span>
+                <span className="font-semibold">{methodName(s.method)}</span>
                 <span className="text-muted-foreground"> · {principleName(s.principle)}</span>
                 <p className="text-muted-foreground">{s.explanation}</p>
               </li>

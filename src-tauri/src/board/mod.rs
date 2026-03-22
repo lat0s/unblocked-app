@@ -21,7 +21,7 @@ pub struct Subtask {
 /// Which planning method shaped an AI item, shown so the user can judge it.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct Strategy {
-    pub book: String,
+    pub method: String,
     pub principle: String,
     pub explanation: String,
 }

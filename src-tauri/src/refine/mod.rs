@@ -350,7 +350,7 @@ mod tests {
                 "items": [
                     { "kind": "task", "title": "Prepare client slides", "priority": "HIGH", "estimatedMinutes": 88, "context": "computer",
                       "dueDate": "2026-01-09", "subtasks": ["Outline", " ", "Draft"], "deepWork": false, "confidence": 1.4,
-                      "strategies": [{ "book": "gtd", "principle": "next_action", "explanation": "First step defined." }] },
+                      "strategies": [{ "method": "gtd", "principle": "next_action", "explanation": "First step defined." }] },
                     { "kind": "event", "title": "Dentist", "date": "2026-01-13", "startTime": "10:00", "endTime": "09:00",
                       "eventType": "nonsense", "deepWork": false, "confidence": 0.9, "strategies": [] },
                     { "kind": "event", "title": "Meeting someday", "date": "next week", "startTime": "15:00", "confidence": 0.5, "strategies": [] },
