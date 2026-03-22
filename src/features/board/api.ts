@@ -6,7 +6,7 @@ import { useAction } from "@/shared/query";
 export type Status = "todo" | "doing" | "done";
 export type Priority = "low" | "medium" | "high" | "urgent";
 export type Subtask = { title: string; done: boolean };
-export type Strategy = { book: string; principle: string; explanation: string };
+export type Strategy = { method: string; principle: string; explanation: string };
 
 export type Task = {
   id: string;
