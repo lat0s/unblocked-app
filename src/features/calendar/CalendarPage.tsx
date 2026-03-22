@@ -33,8 +33,18 @@ export function CalendarPage() {
   }, [anchor]);
   const { data: events = [] } = useEvents(isoDate(week[0]), isoDate(week[6]));
   const scroller = useRef<HTMLDivElement>(null);
+  const [gutter, setGutter] = useState(0);
 
   // Start scrolled to the morning.
+  // Keep day headers aligned with the columns below the scrollbar.
+  useEffect(() => {
+    const el = scroller.current;
+    if (!el) return;
+    const ro = new ResizeObserver(() => setGutter(el.offsetWidth - el.clientWidth));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
   useEffect(() => {
     scroller.current?.scrollTo({ top: (8 - FIRST_HOUR) * HOUR_PX });
   }, []);
@@ -68,7 +78,7 @@ export function CalendarPage() {
 
       <div className="mx-8 mb-8 flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl border-2 border-edge bg-card shadow-brutal">
         {/* Day headers and all-day row */}
-        <div className="grid shrink-0 grid-cols-[56px_repeat(7,1fr)] border-b-2 border-edge">
+        <div className="grid shrink-0 grid-cols-[56px_repeat(7,1fr)] border-b-2 border-edge" style={{ paddingRight: gutter }}>
           <div />
           {week.map((d) => {
             const isToday = isSameDay(d, today);
