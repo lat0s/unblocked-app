@@ -115,7 +115,7 @@ function Flow({ noteId, onClose, onDone }: { noteId: string; onClose: () => void
         </div>
       )}
 
-      <div className="flex items-center gap-2 border-t-2 border-dashed border-border pt-4">
+      <div className="sticky -bottom-4 -mx-4 -mb-4 flex items-center gap-2 border-t-2 border-dashed border-border bg-popover px-4 pt-4 pb-4">
         <Button variant="ghost" onClick={() => plan({}, cards)}>
           Skip, just guess
         </Button>
