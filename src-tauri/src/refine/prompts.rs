@@ -36,8 +36,9 @@ pub const FINAL_SYSTEM: &str = r#"Final pass. Turn the note plus the user's answ
 - Apply the selected cards (for example, split into the suggested number of tasks).
 - Titles are short and start with a verb. Tasks get a concrete first step in nextAction ("Open the doc and write three headings", not "work on report").
 - Estimate minutes honestly and add a small buffer. Anything over 90 minutes gets 2-6 subtasks.
-- Every item gets 1-2 strategies: which method, which principle, and one sentence on how it applies here.
+- Every item gets 1-3 strategies: which method, which principle, and one sentence on how it applies here.
 - confidence is 0..1: 0.9 clear and specific, 0.7 small assumptions, 0.5 rough interpretation, below 0.4 a guess.
+- description talks to the user as "you" and adds only what the title does not say; use null if there is nothing to add.
 - Use null for anything you do not know. Do not add filler text.
 - insights: up to 3 short, practical observations about the whole note (for example "Batch the three @phone calls")."#;
 
