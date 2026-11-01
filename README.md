@@ -10,6 +10,10 @@
 </p>
 
 <p align="center">
+  <a href="https://unblocked.lat0s.com"><img src="https://img.shields.io/badge/live_demo-open-22c7a0?style=for-the-badge" alt="Live demo"></a>
+</p>
+
+<p align="center">
   <a href="https://github.com/lat0s/unblocked-app/actions/workflows/ci.yml"><img src="https://github.com/lat0s/unblocked-app/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <img src="https://img.shields.io/badge/platform-Linux%20%C2%B7%20macOS%20%C2%B7%20Windows-informational" alt="Linux, macOS, Windows">
   <img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT">
@@ -20,6 +24,8 @@
 </p>
 
 > Built as a course project for **TIA410**, developed solo.
+
+**Live demo:** [unblocked.lat0s.com](https://unblocked.lat0s.com) runs the UI in your browser with sample data. It has no AI key, so "Sort it out" is off there: clone the repo, build the app and use your own key.
 
 ## Why
 
@@ -114,6 +120,7 @@ Details and diagrams: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 ```bash
 pnpm install
 pnpm dev            # app with hot reload
+pnpm web           # web demo in the browser (sample data, no AI)
 pnpm test           # Vitest + cargo test
 pnpm run check      # types, lint, format, clippy
 pnpm build          # release binary in src-tauri/target/release/
