@@ -1,6 +1,7 @@
 import { invoke } from "@tauri-apps/api/core";
 
 import { log } from "./log";
+import { IN_TAURI } from "./runtime";
 
 export type ErrorKind = "notConfigured" | "notFound" | "invalidInput" | "provider" | "failed";
 
@@ -25,7 +26,9 @@ export function toAppError(e: unknown): AppError {
 /** Typed `invoke` that normalizes and logs failures. Expected states (not configured, not found) are not logged. */
 export async function call<T>(cmd: string, args?: Record<string, unknown>): Promise<T> {
   try {
-    return await invoke<T>(cmd, args);
+    if (IN_TAURI) return await invoke<T>(cmd, args);
+    const { demoInvoke } = await import("@/demo/backend");
+    return await demoInvoke<T>(cmd, args);
   } catch (raw) {
     const e = toAppError(raw);
     if (e.kind === "failed" || e.kind === "provider") log("warn", `${cmd}: ${e.message}`);

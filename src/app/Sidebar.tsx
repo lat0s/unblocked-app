@@ -1,5 +1,7 @@
 import { Monitor, Moon, Sun } from "lucide-react";
 
+import { DemoTag } from "@/demo/DemoNotice";
+import { IN_TAURI } from "@/shared/runtime";
 import { useTheme, type ThemeChoice } from "@/shared/theme";
 import { cn } from "@/shared/utils";
 
@@ -50,6 +52,7 @@ export function Sidebar({ pages, active, onSelect, badges }: Props) {
       </div>
       {pages.filter((p) => !p.bottom).map(item)}
       <div className="flex-1" />
+      {!IN_TAURI && <DemoTag />}
       {pages.filter((p) => p.bottom).map(item)}
       <div className="mt-3 flex gap-1 rounded-lg bg-muted p-1">
         {THEMES.map((t) => (

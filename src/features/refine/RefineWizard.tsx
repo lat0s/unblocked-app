@@ -1,9 +1,10 @@
-import { ArrowRight, Check, Inbox, Loader2, Settings, Sparkles, TriangleAlert } from "lucide-react";
+import { ArrowRight, Check, ExternalLink, Inbox, Loader2, Settings, Sparkles, TriangleAlert } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import { useNav } from "@/app/nav";
 import { toAppError } from "@/shared/ipc";
-import { Button } from "@/shared/ui/button";
+import { IN_TAURI, REPO_URL } from "@/shared/runtime";
+import { Button, buttonVariants } from "@/shared/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/shared/ui/dialog";
 import { Input } from "@/shared/ui/input";
 import { cn } from "@/shared/utils";
@@ -242,7 +243,9 @@ function Failed({ error, onRetry, onClose }: { error: unknown; onRetry: () => vo
     <div className="grid gap-4">
       <div className="grid place-items-center gap-2 pt-4 text-center">
         <TriangleAlert className="size-10 text-event" />
-        <DialogTitle className="font-heading text-xl">{setup ? "Set up the AI first" : "That didn't work"}</DialogTitle>
+        <DialogTitle className="font-heading text-xl">
+          {!IN_TAURI ? "AI is off in the web demo" : setup ? "Set up the AI first" : "That didn't work"}
+        </DialogTitle>
         <p className="max-w-sm text-sm text-muted-foreground">{e.message}</p>
         <p className="text-xs text-muted-foreground">Your note is saved either way.</p>
       </div>
@@ -250,7 +253,11 @@ function Failed({ error, onRetry, onClose }: { error: unknown; onRetry: () => vo
         <Button variant="outline" onClick={onClose}>
           Close
         </Button>
-        {setup ? (
+        {!IN_TAURI ? (
+          <a href={REPO_URL} target="_blank" rel="noreferrer" className={buttonVariants()}>
+            <ExternalLink /> Get the app
+          </a>
+        ) : setup ? (
           <Button
             onClick={() => {
               onClose();
