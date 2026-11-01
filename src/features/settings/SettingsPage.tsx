@@ -2,7 +2,9 @@ import { Library, Check, KeyRound, Loader2, Plug, Sparkles } from "lucide-react"
 import { useState, type ReactNode } from "react";
 import { toast } from "sonner";
 
+import { DemoAiCard } from "@/demo/DemoNotice";
 import { PageHeader } from "@/shared/components/PageHeader";
+import { IN_TAURI } from "@/shared/runtime";
 import { Badge } from "@/shared/ui/badge";
 import { Button } from "@/shared/ui/button";
 import { Input, Label } from "@/shared/ui/input";
@@ -28,8 +30,9 @@ export function SettingsPage() {
       <PageHeader title="Settings" sub="Everything stays on this computer. Only the note you process is sent to the AI provider." />
       <div className="flex-1 overflow-y-auto px-8 pb-10">
         <div className="mx-auto grid max-w-2xl gap-6">
-          {status.data && <AiCard key={status.data.settings.provider} status={status.data} />}
-          {status.data && <GroundingCard status={status.data} />}
+          {!IN_TAURI && <DemoAiCard />}
+          {IN_TAURI && status.data && <AiCard key={status.data.settings.provider} status={status.data} />}
+          {IN_TAURI && status.data && <GroundingCard status={status.data} />}
           <AboutCard />
         </div>
       </div>
