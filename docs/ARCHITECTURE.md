@@ -97,6 +97,10 @@ Migrations are named per slice and run once at start-up.
 - UI errors (`window.onerror`, unhandled rejections, the error boundary) go to the same log through the `log_client` command.
 - Logs live in `$XDG_STATE_HOME/unblocked/logs/` (1 MiB, one rotated copy). `UNBLOCKED_LOG=debug` raises the level.
 
+## Web demo
+
+Outside Tauri, `shared/ipc.ts` sends commands to `src/demo/backend.ts` instead: the same commands and rules in TypeScript, with sample data in `localStorage`. The AI commands return `notConfigured`, so the demo holds no keys. `deploy/` serves the built UI with nginx on Coolify.
+
 ## Testing
 
 - **Rust**: every slice is tested on an in-memory database. The refine tests run the full start → finish flow against a fake model, including bad replies.
