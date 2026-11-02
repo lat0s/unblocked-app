@@ -3,6 +3,20 @@ const UMAMI_ID = import.meta.env.VITE_UMAMI_ID as string | undefined;
 const UMAMI_SRC = import.meta.env.VITE_UMAMI_SRC as string | undefined;
 const DSN = import.meta.env.VITE_GLITCHTIP_DSN as string | undefined;
 
+let sentry: { captureException: (e: unknown) => unknown } | undefined;
+const queued: unknown[] = [];
+
+// Errors a framework catches itself (error boundaries, Vue errorHandler) never reach window.onerror.
+export function captureError(e: unknown) {
+  try {
+    if (!DSN) return;
+    if (sentry) sentry.captureException(e);
+    else if (queued.length < 10) queued.push(e);
+  } catch {
+    /* never throw from reporting */
+  }
+}
+
 type Umami = { track: (event: string, data?: Record<string, string | number>) => void };
 
 export function track(event: string, data?: Record<string, string | number>) {
@@ -31,14 +45,16 @@ export function initTelemetry() {
     if (DSN) {
       // Errors only: no replay, tracing, breadcrumbs or personal data
       import("@sentry/browser")
-        .then((S) =>
+        .then((S) => {
           S.init({
             dsn: DSN,
             defaultIntegrations: false,
             tracesSampleRate: 0,
             integrations: [S.globalHandlersIntegration(), S.linkedErrorsIntegration(), S.dedupeIntegration()],
-          }),
-        )
+          });
+          sentry = S;
+          queued.splice(0).forEach((e) => S.captureException(e));
+        })
         .catch(() => {});
     }
   };

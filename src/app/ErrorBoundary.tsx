@@ -2,6 +2,7 @@ import { RotateCcw } from "lucide-react";
 import { Component, type ErrorInfo, type ReactNode } from "react";
 
 import { describeError, log } from "@/shared/log";
+import { captureError } from "@/shared/telemetry";
 import { Button } from "@/shared/ui/button";
 
 type Props = { children: ReactNode; scope: string };
@@ -16,6 +17,7 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, info: ErrorInfo) {
+    captureError(error);
     log("error", `page "${this.props.scope}" crashed: ${describeError(error)}\ncomponent stack:${info.componentStack ?? ""}`);
   }
 
