@@ -21,5 +21,5 @@ export default defineConfig({
   resolve: { alias: { "@": fileURLToPath(new URL("./src", import.meta.url)) } },
   clearScreen: false,
   server: { port: 1420, strictPort: true, watch: { ignored: ["**/src-tauri/**"] } },
-  build: { target: "safari16", cssMinify: true, reportCompressedSize: false },
+  build: { target: "safari16", cssMinify: true, reportCompressedSize: false, sourcemap: process.env.SOURCEMAPS ? "hidden" : false },
 });
