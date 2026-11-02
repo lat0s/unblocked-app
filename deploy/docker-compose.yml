@@ -2,7 +2,13 @@
 # Static UI only: no backend, no secrets, no AI.
 services:
   web:
-    build: { context: .., dockerfile: deploy/Dockerfile }
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+      args:
+        VITE_UMAMI_ID: ${VITE_UMAMI_ID:-}
+        VITE_UMAMI_SRC: ${VITE_UMAMI_SRC:-}
+        VITE_GLITCHTIP_DSN: ${VITE_GLITCHTIP_DSN:-}
     restart: unless-stopped
     read_only: true
     tmpfs: [/tmp]

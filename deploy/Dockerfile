@@ -5,6 +5,8 @@ RUN corepack enable
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 RUN pnpm install --frozen-lockfile
 COPY . .
+# Telemetry is off when these are unset (infra-vps sites/add-telemetry.sh sets them on Coolify).
+ARG VITE_UMAMI_ID VITE_UMAMI_SRC VITE_GLITCHTIP_DSN
 RUN pnpm exec vp build
 
 FROM nginxinc/nginx-unprivileged:1.29-alpine
